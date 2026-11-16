@@ -91,6 +91,7 @@ pip install -r requirements.txt
 python run_pipeline.py            # unduh data + seluruh tahap (±1 menit)
 python run_pipeline.py --skip-ingest   # jika data/raw sudah ada
 ```
+Waktu jalan seluruh tahap setelah data terunduh: ±6 detik.
 
 **Uji tanpa internet** (data sintetis berskema identik, hanya untuk menguji kode):
 ```bash
