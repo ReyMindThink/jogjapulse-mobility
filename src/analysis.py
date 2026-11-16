@@ -144,6 +144,30 @@ def q5_validation(con):
                "median_ratio_device_per_penduduk": round((v.n_users / v.pop_actual).median(), 3)}
 
 
+def q6_olap(con):
+    """Operasi OLAP dari materi pada star schema (measure n_pings = distributive -> boleh di-roll-up)."""
+    rollup = con.execute("""
+        SELECT COALESCE(d.kab_kota, '== DIY ==') AS kabupaten, COALESCE(d.kapanewon, '(subtotal)') AS kapanewon,
+               SUM(f.n_pings) AS pings
+        FROM fact_presence_hourly f JOIN dim_kapanewon d USING(kapanewon_code) JOIN dim_date t USING(date)
+        WHERE t.bulan_key = '2021-12'
+        GROUP BY ROLLUP (d.kab_kota, d.kapanewon)
+        ORDER BY d.kab_kota NULLS FIRST, pings DESC""").df()
+    rollup.to_csv(TAB / "q6_olap_rollup_des2021.csv", index=False)
+    # pivot: jam x kabupaten pada slice PPKM 4 (dice: hari kerja)
+    pivot = con.execute("""
+        PIVOT (SELECT d.kab_kota, f.hour, f.n_pings FROM fact_presence_hourly f
+               JOIN dim_kapanewon d USING(kapanewon_code) JOIN dim_date t USING(date)
+               WHERE t.ppkm_level = 4 AND NOT t.is_weekend AND NOT t.is_anomali)
+        ON kab_kota USING SUM(n_pings) GROUP BY hour ORDER BY hour""").df()
+    pivot.to_csv(TAB / "q6_olap_pivot_ppkm4.csv", index=False)
+    # jumlah cuboid: lokasi (kapanewon, kabupaten) L=2; waktu (jam, hari, bulan) L=3 -> (2+1)(3+1)
+    n_cuboid = (2 + 1) * (3 + 1)
+    gold = con.execute("SELECT COUNT(*) FROM information_schema.tables WHERE table_name LIKE 'g_%'").fetchone()[0]
+    return {"cuboid_total_lokasi_x_waktu": n_cuboid, "tabel_gold_termaterialisasi": int(gold),
+            "rollup_diy_pings_des2021": int(rollup.iloc[0].pings)}
+
+
 def main():
     con = duckdb.connect(str(WAREHOUSE), read_only=True)
     TAB.mkdir(parents=True, exist_ok=True)
@@ -158,6 +182,7 @@ def main():
     top, flows, F["Q4_od"] = q4_od(con); top.to_csv(TAB / "q4_top_destinations.csv", index=False)
     flows.to_csv(TAB / "q4_top_flows_dec.csv", index=False)
     v, F["Q5_validasi"] = q5_validation(con)
+    F["Q6_olap"] = q6_olap(con)
     con.close()
     (TAB / "findings.json").write_text(json.dumps(F, indent=1, default=str, ensure_ascii=False))
     print(json.dumps(F, indent=1, default=str, ensure_ascii=False))

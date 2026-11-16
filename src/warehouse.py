@@ -1,7 +1,9 @@
 """TAHAP 2-3 - LOAD (silver) & TRANSFORM (gold) di DuckDB.
 
-silver: tabel bertipe tegas (kode wilayah sebagai TEXT, tanggal sebagai DATE), + dimensi wilayah & kalender.
-gold  : tabel siap-analisis. SEMUA ukuran dinormalisasi (porsi terhadap total DIY pada jam/hari yang sama)
+silver (staging) : tabel bertipe tegas (kode wilayah sebagai TEXT, tanggal sebagai DATE).
+storage (core)   : star schema / fact constellation -> dim_date, dim_kapanewon, dim_cell,
+                   fact_presence_hourly, fact_presence_cell_daily, fact_od_monthly.
+gold (presentasi): cuboid termaterialisasi (partial materialization), siap-analisis. SEMUA ukuran dinormalisasi (porsi terhadap total DIY pada jam/hari yang sama)
         karena ukuran sampel perangkat berubah drastis sepanjang periode (README bag. 6.1).
 """
 import os
@@ -60,14 +62,44 @@ def build(con):
     con.register("dim_df", dim)
     con.execute("CREATE OR REPLACE TABLE dim_kapanewon AS SELECT * FROM dim_df")
 
+    # ---------------- STORAGE: STAR SCHEMA (fact constellation / galaxy) ----------------
+    # 3 tabel fakta berbagi dimensi dim_date & dim_kapanewon (materi: "Fact Constellations")
+    con.execute("""
+    CREATE OR REPLACE TABLE dim_date AS
+    SELECT date, year(date) AS tahun, month(date) AS bulan, strftime(date, '%Y-%m') AS bulan_key,
+           CAST(week(date) AS INT) AS minggu, hari, dayofweek(date) IN (0, 6) AS is_weekend,
+           is_libur, libur_nasional, ppkm_level, periode_nataru, periode_ramadan, is_anomali, panel_segment
+    FROM s_calendar;
+
+    CREATE OR REPLACE TABLE fact_presence_hourly AS      -- grain: kapanewon x tanggal x jam
+    SELECT kapanewon_code, date, hour, n_maids, n_pings FROM s_kap_hourly;
+
+    CREATE OR REPLACE TABLE fact_od_monthly AS           -- grain: asal x tujuan x bulan
+    SELECT month AS bulan_key, origin_code, dest_code, n_maids, reduced_quality FROM s_od;
+    """)
+    # dim_cell: hierarki sel 500 m -> kapanewon -> kabupaten lewat spatial join titik tengah sel
+    cells = con.execute("SELECT DISTINCT cell_id, x_min_utm, y_min_utm, lon, lat FROM s_cell_daily").df()
+    pts = gpd.GeoDataFrame(cells, geometry=gpd.points_from_xy(cells.lon, cells.lat), crs=4326).to_crs(32749)
+    poly = gpd.read_file(EXTERNAL / "kapanewon_diy.geojson")[["kode_bps", "geometry"]].to_crs(32749)
+    j = gpd.sjoin_nearest(pts, poly, how="left", max_distance=1000).drop_duplicates("cell_id")
+    code = con.execute("SELECT kode_bps, kapanewon_code FROM dim_kapanewon").df()
+    dc = j.drop(columns=["geometry", "index_right"]).merge(code, on="kode_bps", how="left")
+    con.register("dim_cell_df", dc)
+    con.execute("""
+    CREATE OR REPLACE TABLE dim_cell AS SELECT cell_id, x_min_utm, y_min_utm, lon, lat, kapanewon_code FROM dim_cell_df;
+    CREATE OR REPLACE TABLE fact_presence_cell_daily AS  -- grain: sel 500 m x tanggal
+    SELECT cell_id, date, n_maids FROM s_cell_daily;
+    """)
+    con.unregister("dim_df"); con.unregister("dim_cell_df")
+
     # ---------------- GOLD ----------------
     night, day = ",".join(map(str, NIGHT_HOURS)), ",".join(map(str, DAY_HOURS))
     con.execute(f"""
     -- G1. ringkasan harian: ukuran panel + kalender (untuk menunjukkan masalah sampel)
     CREATE OR REPLACE TABLE g_daily AS
     WITH h AS (SELECT date, SUM(n_maids) device_hours, SUM(n_pings) pings, COUNT(*) kap_hours_published
-               FROM s_kap_hourly GROUP BY date),
-         c AS (SELECT date, SUM(n_maids) device_cells, COUNT(*) cells_published FROM s_cell_daily GROUP BY date)
+               FROM fact_presence_hourly GROUP BY date),
+         c AS (SELECT date, SUM(n_maids) device_cells, COUNT(*) cells_published FROM fact_presence_cell_daily GROUP BY date)
     SELECT k.*, h.device_hours, h.pings, h.kap_hours_published, c.device_cells, c.cells_published
     FROM s_calendar k LEFT JOIN h USING(date) LEFT JOIN c USING(date) ORDER BY date;
 
@@ -75,7 +107,7 @@ def build(con):
     CREATE OR REPLACE TABLE g_kap_hour_share AS
     SELECT h.*, n_maids * 1.0 / SUM(n_maids) OVER (PARTITION BY date, hour) AS share,
            n_pings * 1.0 / n_maids AS pings_per_device
-    FROM s_kap_hourly h;
+    FROM fact_presence_hourly h;
 
     -- G3. indeks penarik siang (day/night): porsi siang / porsi malam, hari kerja normal saja
     CREATE OR REPLACE TABLE g_attractor AS
@@ -99,7 +131,7 @@ def build(con):
 
     -- G4. profil jam harian DIY (dinormalisasi per hari: nilai jam / rata-rata jam hari itu)
     CREATE OR REPLACE TABLE g_hourly_profile AS
-    WITH t AS (SELECT date, hour, SUM(n_maids) dh FROM s_kap_hourly GROUP BY ALL),
+    WITH t AS (SELECT date, hour, SUM(n_maids) dh FROM fact_presence_hourly GROUP BY ALL),
          n AS (SELECT *, dh / AVG(dh) OVER (PARTITION BY date) AS rel FROM t)
     SELECT n.*, k.ppkm_level, k.panel_segment, k.is_libur, k.is_anomali, k.periode_nataru
     FROM n JOIN s_calendar k USING(date);
@@ -114,14 +146,19 @@ def build(con):
 
     -- G6. porsi harian tiap sel 500 m
     CREATE OR REPLACE TABLE g_cell_share AS
-    SELECT *, n_maids * 1.0 / SUM(n_maids) OVER (PARTITION BY date) AS share FROM s_cell_daily;
+    SELECT f.*, c.lon, c.lat, n_maids * 1.0 / SUM(n_maids) OVER (PARTITION BY f.date) AS share
+    FROM fact_presence_cell_daily f JOIN dim_cell c USING(cell_id);
 
     -- G7. OD: hanya Des 2021 - Feb 2022 (Mar-Apr reduced_quality, README bag. 6.6)
     CREATE OR REPLACE TABLE g_od AS
-    SELECT o.*, g.n_homed_maids, g.n_homed_maids_daytime,
-           o.n_maids * 1.0 / g.n_homed_maids_daytime AS visit_prob
-    FROM s_od o JOIN s_od_origin g USING(month, origin_code)
-    WHERE NOT o.reduced_quality AND o.origin_code <> o.dest_code;
+    SELECT f.bulan_key AS month, f.origin_code, o.kab_kota AS origin_kab_kota, o.kapanewon AS origin_kapanewon,
+           f.dest_code, d.kab_kota AS dest_kab_kota, d.kapanewon AS dest_kapanewon, f.n_maids, f.reduced_quality,
+           g.n_homed_maids, g.n_homed_maids_daytime, f.n_maids * 1.0 / g.n_homed_maids_daytime AS visit_prob
+    FROM fact_od_monthly f
+    JOIN dim_kapanewon o ON o.kapanewon_code = f.origin_code
+    JOIN dim_kapanewon d ON d.kapanewon_code = f.dest_code
+    JOIN s_od_origin g ON g.month = f.bulan_key AND g.origin_code = f.origin_code
+    WHERE NOT f.reduced_quality AND f.origin_code <> f.dest_code;
 
     CREATE OR REPLACE TABLE g_od_attract AS
     SELECT month, dest_code, dest_kab_kota, dest_kapanewon,
@@ -131,7 +168,7 @@ def build(con):
     """)
 
     # G8. titik wisata: sel dalam radius 1 km dari koordinat situs
-    cells = con.execute("SELECT DISTINCT cell_id, lon, lat FROM s_cell_daily").df()
+    cells = con.execute("SELECT cell_id, lon, lat FROM dim_cell").df()
     g = gpd.GeoDataFrame(cells, geometry=gpd.points_from_xy(cells.lon, cells.lat), crs=4326).to_crs(32749)
     rows = []
     for name, (lon, lat) in TOURISM_SITES.items():

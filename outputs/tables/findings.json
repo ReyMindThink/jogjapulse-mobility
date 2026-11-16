@@ -299,5 +299,10 @@
   "r_home_vs_pop_linear": 0.82,
   "r_home_vs_pop_loglog": 0.688,
   "median_ratio_device_per_penduduk": 0.09
+ },
+ "Q6_olap": {
+  "cuboid_total_lokasi_x_waktu": 12,
+  "tabel_gold_termaterialisasi": 9,
+  "rollup_diy_pings_des2021": 17977686
  }
 }

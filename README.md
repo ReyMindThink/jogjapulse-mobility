@@ -46,23 +46,35 @@ Kronologi PPKM DIY yang dipakai:
 | 22 Mar – 18 Apr 2022 | 3 | Inmendagri 18–22/2022; Ingub DIY 12/2022 |
 | 19 – 30 Apr 2022 | 2 | Ingub DIY 13/INSTR/2022 |
 
-## Arsitektur pipeline
+## Arsitektur data warehouse
+
+Mengikuti empat lapisan data warehouse (Source → Staging → Storage → Presentation) dengan pola **ELT** di DuckDB (mesin OLAP berbasis kolom):
 
 ```
-Zenodo API ──► [1] ingest.py ──► data/raw/ (bronze, MD5 terverifikasi)
-                                     │
-Inmendagri/Ingub, holidays ──► [2] build_calendar.py ──► data/external/kalender_kebijakan_diy.csv
-HDX-BPS (desa) ──► build_boundaries.py ──► data/external/kapanewon_diy.geojson
-                                     │
-                              [3] warehouse.py  (DuckDB)
-                                  silver: s_kap_hourly, s_cell_daily, s_od, s_od_origin, s_calendar, dim_kapanewon
-                                  gold  : g_daily, g_kap_hour_share, g_attractor, g_hourly_profile,
-                                          g_core_share, g_cell_share, g_site_share, g_od, g_od_attract
-                                     │
-                              [4] quality.py  ──► outputs/tables/quality_report.csv (19 aturan)
-                              [5] analysis.py ──► outputs/tables/*.csv, findings.json
-                              [6] visualize.py──► outputs/figures/*.png
+DATA SOURCE        DATA STAGING (silver)        DATA STORAGE (star schema)            DATA PRESENTATION (gold)
+Zenodo API  ─┐     s_kap_hourly                 dim_date ─┬─ fact_presence_hourly ─┬─ dim_kapanewon      g_daily, g_kap_hour_share,
+Kalender    ─┼ELT► s_cell_daily     ──────►              ├─ fact_presence_cell  ──┤  └─ dim_cell       g_attractor, g_hourly_profile,
+HDX-BPS     ─┘     s_od, s_od_origin                     └─ fact_od_monthly ──────┘  (hierarki sel →   g_core_share, g_cell_share,
+                   s_calendar, s_home_pop                                               kapanewon)      g_site_share, g_od, g_od_attract
+                   (MD5, tipe tegas)                                                                    → outputs/ (tabel, grafik)
 ```
+
+Tahapan `run_pipeline.py`: **ingest** (Zenodo + MD5) → **kalender** (sumber ke-2) → **warehouse** (staging, star schema, cuboid) → **quality** (24 aturan) → **analisis** → **visualisasi**.
+
+## Keterkaitan dengan materi *Introduction to Data Warehouse*
+
+| Konsep materi | Implementasi di proyek |
+|---|---|
+| Definisi DW (Inmon): *subject-oriented, integrated, time-variant, nonvolatile* | subjek = mobilitas; integrasi 3 sumber; berdimensi waktu (jam/hari/bulan); data mentah tidak diubah (bronze) |
+| Layers: Source → Staging → Storage → Presentation | `data/raw` → tabel `s_*` → star schema `dim_*`/`fact_*` → tabel `g_*` + `outputs/` |
+| ETL | ELT di DuckDB (load dulu, transform dengan SQL) |
+| Inmon vs Kimball | pendekatan **Kimball** (bottom-up, denormalized, cepat dibangun untuk satu kebutuhan analisis) |
+| OLAP vs OLTP | DuckDB = OLAP (kolumnar, query agregasi); data historis 151 hari; konsolidasi sumber heterogen; rekonsiliasi kode wilayah (`keys.py`) |
+| Star / snowflake / **fact constellation** | 3 tabel fakta berbagi `dim_date` & `dim_kapanewon`; `dim_cell → dim_kapanewon` (hierarki ala snowflake, via spatial join) |
+| Operasi cube | roll-up (`GROUP BY ROLLUP` kapanewon → kabupaten → DIY), slice (`ppkm_level = 4`), dice (hari kerja × jam 09–16), pivot (jam × kabupaten) — `outputs/tables/q6_olap_*.csv` |
+| Measure: distributive / algebraic / holistic | `n_pings` distributive (boleh dijumlahkan); porsi = algebraic (SUM/SUM); `n_maids` = COUNT DISTINCT → **holistic, tidak boleh dijumlahkan** antar sel/jam |
+| Materialisasi cuboid | lokasi 2 level × waktu 3 level → T = Π(Lᵢ+1) = 12 cuboid; 9 dimaterialisasi (**partial materialization**) |
+| Data quality | 24 aturan: k ≥ 5, PK unik, FK fakta→dimensi, rentang tanggal/jam, jumlah baris = README |
 
 ## Keputusan metodologis penting
 
@@ -108,7 +120,7 @@ python tests/make_synthetic.py /tmp/synth && JP_RAW=/tmp/synth python run_pipeli
 │   ├── ingest.py            # [1] Zenodo API + MD5
 │   ├── build_calendar.py    # [2] sumber data ke-2
 │   ├── build_boundaries.py  #     batas kapanewon (sekali jalan)
-│   ├── warehouse.py         # [3] DuckDB silver + gold (SQL)
+│   ├── warehouse.py         # [3] DuckDB: staging, star schema, cuboid (SQL)
 │   ├── quality.py           # [4] data quality checks
 │   ├── analysis.py          # [5] statistik Q1–Q4
 │   └── visualize.py         # [6] gambar

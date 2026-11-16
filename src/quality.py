@@ -25,6 +25,18 @@ CHECKS = [
      "jika gagal: tambah alias di keys.py"),
     ("kalender: 151 hari tanpa celah", "SELECT ABS(COUNT(*) - 151) FROM s_calendar", ""),
     ("hourly: setiap tanggal punya data", f"SELECT 151 - COUNT(DISTINCT date) FROM s_kap_hourly", ""),
+    # integritas referensial star schema (fakta -> dimensi)
+    ("FK fact_presence_hourly -> dim_kapanewon",
+     "SELECT COUNT(*) FROM fact_presence_hourly f LEFT JOIN dim_kapanewon d USING(kapanewon_code) WHERE d.kapanewon_code IS NULL", "star schema"),
+    ("FK fact_presence_hourly -> dim_date",
+     "SELECT COUNT(*) FROM fact_presence_hourly f LEFT JOIN dim_date d USING(date) WHERE d.date IS NULL", "star schema"),
+    ("FK fact_presence_cell_daily -> dim_cell",
+     "SELECT COUNT(*) FROM fact_presence_cell_daily f LEFT JOIN dim_cell d USING(cell_id) WHERE d.cell_id IS NULL", "star schema"),
+    ("FK fact_od_monthly -> dim_kapanewon (asal & tujuan)",
+     "SELECT COUNT(*) FROM fact_od_monthly f LEFT JOIN dim_kapanewon o ON o.kapanewon_code=f.origin_code "
+     "LEFT JOIN dim_kapanewon d ON d.kapanewon_code=f.dest_code WHERE o.kapanewon_code IS NULL OR d.kapanewon_code IS NULL", "star schema"),
+    ("dim_cell: setiap sel terpetakan ke kapanewon",
+     "SELECT COUNT(*) FROM dim_cell WHERE kapanewon_code IS NULL", "spatial join, radius 1 km"),
     ("od: setiap origin punya denominator",
      "SELECT COUNT(*) FROM s_od o LEFT JOIN s_od_origin g USING(month, origin_code) WHERE g.n_homed_maids IS NULL", ""),
 ]

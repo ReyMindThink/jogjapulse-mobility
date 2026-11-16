@@ -12,6 +12,11 @@ dimensi: 78 kapanewon,0,PASS,README 4.2
 join peta: semua kapanewon punya poligon,0,PASS,jika gagal: tambah alias di keys.py
 kalender: 151 hari tanpa celah,0,PASS,
 hourly: setiap tanggal punya data,0,PASS,
+FK fact_presence_hourly -> dim_kapanewon,0,PASS,star schema
+FK fact_presence_hourly -> dim_date,0,PASS,star schema
+FK fact_presence_cell_daily -> dim_cell,0,PASS,star schema
+FK fact_od_monthly -> dim_kapanewon (asal & tujuan),0,PASS,star schema
+dim_cell: setiap sel terpetakan ke kapanewon,0,PASS,"spatial join, radius 1 km"
 od: setiap origin punya denominator,0,PASS,
 "jumlah baris presence_kapanewon_hourly.csv = README (230,418)",0,PASS,"aktual 230,418"
 "jumlah baris presence_cell500m_daily.csv = README (183,548)",0,PASS,"aktual 183,548"
