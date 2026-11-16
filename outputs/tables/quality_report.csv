@@ -1,0 +1,20 @@
+check,violations,status,note
+hourly: n_maids >= 5 (k-anonymity),0,PASS,README bag. 5
+cell: n_maids >= 5 (k-anonymity),0,PASS,README bag. 5
+od: n_maids >= 5 (k-anonymity),0,PASS,README bag. 5
+hourly: jam 0-23,0,PASS,README 4.2
+hourly: tanggal dalam periode,0,PASS,
+cell: tanggal dalam periode,0,PASS,
+"hourly: tidak ada duplikat (kapanewon,date,hour)",0,PASS,primary key
+"cell: tidak ada duplikat (cell,date)",0,PASS,primary key
+hourly: n_pings >= n_maids,0,PASS,logika: 1 perangkat >= 1 ping
+dimensi: 78 kapanewon,0,PASS,README 4.2
+join peta: semua kapanewon punya poligon,0,PASS,jika gagal: tambah alias di keys.py
+kalender: 151 hari tanpa celah,0,PASS,
+hourly: setiap tanggal punya data,0,PASS,
+od: setiap origin punya denominator,0,PASS,
+"jumlah baris presence_kapanewon_hourly.csv = README (230,418)",0,PASS,"aktual 230,418"
+"jumlah baris presence_cell500m_daily.csv = README (183,548)",0,PASS,"aktual 183,548"
+"jumlah baris od_home_visits_kapanewon_monthly.csv = README (9,894)",0,PASS,"aktual 9,894"
+jumlah baris od_origin_homes_monthly.csv = README (390),0,PASS,aktual 390
+jumlah baris home_maids_vs_population_kapanewon.csv = README (78),0,PASS,aktual 78

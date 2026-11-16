@@ -1,0 +1,152 @@
+date,ppkm_level,ppkm_sumber,libur_nasional,is_libur,periode_nataru,periode_ramadan,hari,is_anomali,panel_segment
+2021-12-01,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,1
+2021-12-02,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,1
+2021-12-03,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,1
+2021-12-04,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,1
+2021-12-05,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,1
+2021-12-06,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,1
+2021-12-07,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,1
+2021-12-08,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,1
+2021-12-09,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,1
+2021-12-10,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,1
+2021-12-11,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,1
+2021-12-12,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,1
+2021-12-13,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,1
+2021-12-14,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,1
+2021-12-15,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,1
+2021-12-16,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,1
+2021-12-17,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,1
+2021-12-18,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,1
+2021-12-19,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,1
+2021-12-20,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,1
+2021-12-21,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,1
+2021-12-22,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,1
+2021-12-23,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,1
+2021-12-24,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Friday,False,1
+2021-12-25,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),Hari Raya Natal,True,True,False,Saturday,False,1
+2021-12-26,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,True,False,Sunday,False,1
+2021-12-27,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Monday,False,1
+2021-12-28,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Tuesday,False,1
+2021-12-29,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Wednesday,False,1
+2021-12-30,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Thursday,False,1
+2021-12-31,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,True,False,Friday,False,1
+2022-01-01,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),Tahun Baru Masehi,True,True,False,Saturday,False,2
+2022-01-02,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,True,False,Sunday,False,2
+2022-01-03,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-01-04,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,2
+2022-01-05,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,2
+2022-01-06,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,2
+2022-01-07,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,2
+2022-01-08,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,2
+2022-01-09,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,2
+2022-01-10,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-01-11,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,2
+2022-01-12,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,2
+2022-01-13,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,2
+2022-01-14,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,2
+2022-01-15,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,2
+2022-01-16,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,2
+2022-01-17,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-01-18,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,2
+2022-01-19,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,2
+2022-01-20,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,2
+2022-01-21,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,2
+2022-01-22,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,2
+2022-01-23,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,2
+2022-01-24,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-01-25,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Tuesday,False,2
+2022-01-26,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,2
+2022-01-27,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,2
+2022-01-28,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,2
+2022-01-29,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,2
+2022-01-30,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,2
+2022-01-31,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-02-01,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),Tahun Baru Imlek,True,False,False,Tuesday,False,2
+2022-02-02,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Wednesday,False,2
+2022-02-03,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Thursday,False,2
+2022-02-04,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Friday,False,2
+2022-02-05,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Saturday,False,2
+2022-02-06,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,True,False,False,Sunday,False,2
+2022-02-07,2,Inmendagri 67/2021 dst. (Des: level 2; Jan: diasumsikan tetap level 2),,False,False,False,Monday,False,2
+2022-02-08,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Tuesday,False,2
+2022-02-09,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Wednesday,False,2
+2022-02-10,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Thursday,False,2
+2022-02-11,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Friday,False,2
+2022-02-12,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Saturday,False,2
+2022-02-13,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Sunday,False,2
+2022-02-14,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Monday,False,2
+2022-02-15,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Tuesday,False,2
+2022-02-16,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Wednesday,False,3
+2022-02-17,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Thursday,False,3
+2022-02-18,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Friday,False,3
+2022-02-19,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Saturday,False,3
+2022-02-20,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Sunday,False,3
+2022-02-21,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Monday,False,3
+2022-02-22,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Tuesday,False,3
+2022-02-23,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Wednesday,False,3
+2022-02-24,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Thursday,False,3
+2022-02-25,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Friday,False,3
+2022-02-26,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Saturday,False,3
+2022-02-27,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Sunday,False,3
+2022-02-28,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,Isra Mikraj Nabi Muhammad,True,False,False,Monday,False,3
+2022-03-01,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Tuesday,False,3
+2022-03-02,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Wednesday,False,3
+2022-03-03,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,Hari Suci Nyepi,True,False,False,Thursday,False,3
+2022-03-04,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Friday,False,3
+2022-03-05,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Saturday,False,3
+2022-03-06,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,True,False,False,Sunday,False,3
+2022-03-07,3,Inmendagri 9/2022 s.d. 13/2022; Ingub DIY 5/2022,,False,False,False,Monday,False,3
+2022-03-08,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Tuesday,True,3
+2022-03-09,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Wednesday,False,3
+2022-03-10,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Thursday,False,3
+2022-03-11,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Friday,False,3
+2022-03-12,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,True,False,False,Saturday,False,3
+2022-03-13,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,True,False,False,Sunday,False,3
+2022-03-14,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Monday,False,3
+2022-03-15,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Tuesday,False,3
+2022-03-16,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Wednesday,False,3
+2022-03-17,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Thursday,False,3
+2022-03-18,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Friday,False,3
+2022-03-19,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,True,False,False,Saturday,False,3
+2022-03-20,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,True,False,False,Sunday,False,3
+2022-03-21,4,Inmendagri 15/2022 & 16/2022; Ingub DIY 9/2022,,False,False,False,Monday,False,3
+2022-03-22,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Tuesday,False,3
+2022-03-23,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Wednesday,False,3
+2022-03-24,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Thursday,False,3
+2022-03-25,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Friday,False,3
+2022-03-26,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,False,Saturday,False,3
+2022-03-27,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,False,Sunday,False,3
+2022-03-28,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Monday,False,3
+2022-03-29,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Tuesday,False,3
+2022-03-30,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Wednesday,False,3
+2022-03-31,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Thursday,False,3
+2022-04-01,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,False,Friday,False,3
+2022-04-02,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Saturday,False,3
+2022-04-03,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Sunday,False,3
+2022-04-04,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Monday,False,3
+2022-04-05,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Tuesday,False,3
+2022-04-06,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Wednesday,False,3
+2022-04-07,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Thursday,False,3
+2022-04-08,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Friday,False,3
+2022-04-09,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Saturday,False,3
+2022-04-10,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Sunday,False,3
+2022-04-11,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Monday,False,3
+2022-04-12,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Tuesday,False,3
+2022-04-13,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Wednesday,False,3
+2022-04-14,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Thursday,False,3
+2022-04-15,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,Wafat Yesus Kristus,True,False,True,Friday,False,3
+2022-04-16,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Saturday,False,3
+2022-04-17,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,True,False,True,Sunday,False,3
+2022-04-18,3,Inmendagri 18/2022 s.d. 22/2022; Ingub DIY 12/2022,,False,False,True,Monday,False,3
+2022-04-19,2,Ingub DIY 13/INSTR/2022,,False,False,True,Tuesday,False,3
+2022-04-20,2,Ingub DIY 13/INSTR/2022,,False,False,True,Wednesday,False,3
+2022-04-21,2,Ingub DIY 13/INSTR/2022,,False,False,True,Thursday,False,3
+2022-04-22,2,Ingub DIY 13/INSTR/2022,,False,False,True,Friday,False,3
+2022-04-23,2,Ingub DIY 13/INSTR/2022,,True,False,True,Saturday,False,3
+2022-04-24,2,Ingub DIY 13/INSTR/2022,,True,False,True,Sunday,False,3
+2022-04-25,2,Ingub DIY 13/INSTR/2022,,False,False,True,Monday,False,3
+2022-04-26,2,Ingub DIY 13/INSTR/2022,,False,False,True,Tuesday,False,3
+2022-04-27,2,Ingub DIY 13/INSTR/2022,,False,False,True,Wednesday,False,3
+2022-04-28,2,Ingub DIY 13/INSTR/2022,,False,False,True,Thursday,False,3
+2022-04-29,2,Ingub DIY 13/INSTR/2022,,False,False,True,Friday,False,3
+2022-04-30,2,Ingub DIY 13/INSTR/2022,,True,False,True,Saturday,False,3

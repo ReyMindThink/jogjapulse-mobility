@@ -1,0 +1,303 @@
+{
+ "Q0_panel": {
+  "penurunan_panel_pct": 86.9
+ },
+ "Q1_attractor_naif": {
+  "top5_penarik_siang": [
+   {
+    "kapanewon": "PLAYEN",
+    "kab_kota": "GUNUNGKIDUL",
+    "attractor_index": 1.45
+   },
+   {
+    "kapanewon": "WONOSARI",
+    "kab_kota": "GUNUNGKIDUL",
+    "attractor_index": 1.35
+   },
+   {
+    "kapanewon": "SAMIGALUH",
+    "kab_kota": "KULON PROGO",
+    "attractor_index": 1.34
+   },
+   {
+    "kapanewon": "NANGGULAN",
+    "kab_kota": "KULON PROGO",
+    "attractor_index": 1.3
+   },
+   {
+    "kapanewon": "KARANGMOJO",
+    "kab_kota": "GUNUNGKIDUL",
+    "attractor_index": 1.28
+   }
+  ],
+  "top5_hunian": [
+   {
+    "kapanewon": "TEMPEL",
+    "kab_kota": "SLEMAN",
+    "attractor_index": 0.77
+   },
+   {
+    "kapanewon": "BANTUL",
+    "kab_kota": "BANTUL",
+    "attractor_index": 0.66
+   },
+   {
+    "kapanewon": "SLEMAN",
+    "kab_kota": "SLEMAN",
+    "attractor_index": 0.6
+   },
+   {
+    "kapanewon": "TEGALREJO",
+    "kab_kota": "YOGYAKARTA",
+    "attractor_index": 0.56
+   },
+   {
+    "kapanewon": "GONDOMANAN",
+    "kab_kota": "YOGYAKARTA",
+    "attractor_index": 0.28
+   }
+  ],
+  "n_reliable": 56
+ },
+ "Q1b_bias_malam": {
+  "aktivitas_relatif_jam_02": {
+   "BANTUL": 0.36,
+   "GUNUNGKIDUL": 0.2,
+   "KULON PROGO": 0.25,
+   "SLEMAN": 0.42,
+   "YOGYAKARTA": 0.72
+  }
+ },
+ "Q2_ppkm": {
+  "kota_day_share_mean_by_level": [
+   {
+    "ppkm_level": 2,
+    "mean": 0.2292,
+    "count": 9
+   },
+   {
+    "ppkm_level": 3,
+    "mean": 0.2231,
+    "count": 31
+   },
+   {
+    "ppkm_level": 4,
+    "mean": 0.1929,
+    "count": 9
+   }
+  ],
+  "ols_kota_share_vs_level2": {
+   "3": {
+    "coef": 0.02405,
+    "p": 0.0349
+   },
+   "4": {
+    "coef": -0.00178,
+    "p": 0.8653
+   }
+  },
+  "ols_kota_r2": 0.492,
+  "ols_evening_vs_level2": {
+   "3": {
+    "coef": -0.01466,
+    "p": 0.2062
+   },
+   "4": {
+    "coef": 0.00041,
+    "p": 0.9838
+   }
+  },
+  "n_hari": 49
+ },
+ "Q2b_ABA": {
+  "kota_share_fase": [
+   {
+    "fase": "A: PPKM 3\n16 Feb-7 Mar",
+    "mean": 0.2041,
+    "std": 0.0116,
+    "count": 12
+   },
+   {
+    "fase": "B: PPKM 4\n9-21 Mar",
+    "mean": 0.1929,
+    "std": 0.0062,
+    "count": 9
+   },
+   {
+    "fase": "C: PPKM 3\n22 Mar-1 Apr",
+    "mean": 0.2117,
+    "std": 0.0164,
+    "count": 9
+   }
+  ],
+  "p_A_vs_B": 0.0077,
+  "p_B_vs_C": 0.0047,
+  "p_A_vs_C": 0.1658,
+  "share_per_kab": [
+   {
+    "kab_kota": "BANTUL",
+    "A: PPKM 3\n16 Feb-7 Mar": 0.2196,
+    "B: PPKM 4\n9-21 Mar": 0.2189,
+    "C: PPKM 3\n22 Mar-1 Apr": 0.2283
+   },
+   {
+    "kab_kota": "GUNUNGKIDUL",
+    "A: PPKM 3\n16 Feb-7 Mar": 0.0667,
+    "B: PPKM 4\n9-21 Mar": 0.0805,
+    "C: PPKM 3\n22 Mar-1 Apr": 0.071
+   },
+   {
+    "kab_kota": "KULON PROGO",
+    "A: PPKM 3\n16 Feb-7 Mar": 0.0911,
+    "B: PPKM 4\n9-21 Mar": 0.1086,
+    "C: PPKM 3\n22 Mar-1 Apr": 0.0856
+   },
+   {
+    "kab_kota": "SLEMAN",
+    "A: PPKM 3\n16 Feb-7 Mar": 0.4185,
+    "B: PPKM 4\n9-21 Mar": 0.3991,
+    "C: PPKM 3\n22 Mar-1 Apr": 0.4034
+   },
+   {
+    "kab_kota": "YOGYAKARTA",
+    "A: PPKM 3\n16 Feb-7 Mar": 0.2041,
+    "B: PPKM 4\n9-21 Mar": 0.1929,
+    "C: PPKM 3\n22 Mar-1 Apr": 0.2117
+   }
+  ]
+ },
+ "Q3_nataru": {
+  "nataru_uplift": [
+   {
+    "site": "Baron-Kukup (GK)",
+    "share_1_23_des": 9e-05,
+    "share_nataru": 0.0001,
+    "rasio_nataru_vs_awal_des": 1.15657,
+    "hari_puncak": "2021-12-25"
+   },
+   {
+    "site": "Candi Prambanan",
+    "share_1_23_des": 0.00195,
+    "share_nataru": 0.00045,
+    "rasio_nataru_vs_awal_des": 0.23146,
+    "hari_puncak": "2022-01-01"
+   },
+   {
+    "site": "Malioboro",
+    "share_1_23_des": 0.01276,
+    "share_nataru": 0.01239,
+    "rasio_nataru_vs_awal_des": 0.97152,
+    "hari_puncak": "2022-01-01"
+   },
+   {
+    "site": "Pantai Parangtritis",
+    "share_1_23_des": 7e-05,
+    "share_nataru": NaN,
+    "rasio_nataru_vs_awal_des": NaN,
+    "hari_puncak": NaN
+   },
+   {
+    "site": "Tugu Jogja",
+    "share_1_23_des": 0.01389,
+    "share_nataru": 0.01323,
+    "rasio_nataru_vs_awal_des": 0.95231,
+    "hari_puncak": "2022-01-01"
+   }
+  ],
+  "permil_per_periode": [
+   {
+    "site": "Baron-Kukup (GK)",
+    "des_1_23": 0.09,
+    "natal_24_30": 0.1,
+    "malam_tahun_baru": 0.08,
+    "tahun_baru_1_2_jan": 0.14,
+    "jan_3_31": 0.14
+   },
+   {
+    "site": "Candi Prambanan",
+    "des_1_23": 1.95,
+    "natal_24_30": 0.42,
+    "malam_tahun_baru": 0.53,
+    "tahun_baru_1_2_jan": 0.51,
+    "jan_3_31": 3.08
+   },
+   {
+    "site": "Malioboro",
+    "des_1_23": 12.76,
+    "natal_24_30": 11.17,
+    "malam_tahun_baru": 12.75,
+    "tahun_baru_1_2_jan": 16.5,
+    "jan_3_31": 19.28
+   },
+   {
+    "site": "Pantai Parangtritis",
+    "des_1_23": 0.07,
+    "natal_24_30": NaN,
+    "malam_tahun_baru": NaN,
+    "tahun_baru_1_2_jan": NaN,
+    "jan_3_31": 0.26
+   },
+   {
+    "site": "Tugu Jogja",
+    "des_1_23": 13.89,
+    "natal_24_30": 12.36,
+    "malam_tahun_baru": 12.36,
+    "tahun_baru_1_2_jan": 16.69,
+    "jan_3_31": 19.81
+   }
+  ]
+ },
+ "Q4_od": {
+  "top5_tujuan_des": [
+   {
+    "dest_kapanewon": "DEPOK",
+    "dest_kab_kota": "SLEMAN",
+    "n_origins": 70,
+    "inflow_share": 0.0738
+   },
+   {
+    "dest_kapanewon": "NGAGLIK",
+    "dest_kab_kota": "SLEMAN",
+    "n_origins": 68,
+    "inflow_share": 0.0571
+   },
+   {
+    "dest_kapanewon": "GAMPING",
+    "dest_kab_kota": "SLEMAN",
+    "n_origins": 66,
+    "inflow_share": 0.0567
+   },
+   {
+    "dest_kapanewon": "BANGUNTAPAN",
+    "dest_kab_kota": "BANTUL",
+    "n_origins": 67,
+    "inflow_share": 0.0544
+   },
+   {
+    "dest_kapanewon": "PAKEM",
+    "dest_kab_kota": "SLEMAN",
+    "n_origins": 57,
+    "inflow_share": 0.0513
+   }
+  ],
+  "porsi_kunjungan_ke_kota_per_bulan": [
+   {
+    "month": "2021-12",
+    "s": 0.1994
+   },
+   {
+    "month": "2022-01",
+    "s": 0.2739
+   },
+   {
+    "month": "2022-02",
+    "s": 0.3202
+   }
+  ]
+ },
+ "Q5_validasi": {
+  "r_home_vs_pop_linear": 0.82,
+  "r_home_vs_pop_loglog": 0.688,
+  "median_ratio_device_per_penduduk": 0.09
+ }
+}
